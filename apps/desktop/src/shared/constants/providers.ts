@@ -73,4 +73,11 @@ export const PROVIDER_REGISTRY: ProviderInfo[] = [
     authMethods: ['api-key'], envVars: [],
     configFields: ['baseUrl'],
   },
+  {
+    id: 'mascarade', name: 'Mascarade', description: 'LLM Orchestration Engine — multi-provider routing with 19+ agents',
+    category: 'local',
+    authMethods: ['api-key'], envVars: ['MASCARADE_API_KEY'],
+    configFields: ['baseUrl'],
+    website: 'https://mascarade.saillant.cc',
+  },
 ];

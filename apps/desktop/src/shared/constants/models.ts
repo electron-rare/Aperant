@@ -71,6 +71,12 @@ export const ALL_AVAILABLE_MODELS: ModelOption[] = [
   { value: 'glm-4.7', label: 'GLM-4.7', provider: 'zai', description: 'Previous flagship', capabilities: { thinking: false, tools: true, vision: false, contextWindow: 128000 } },
   { value: 'glm-4.6v', label: 'GLM-4.6V', provider: 'zai', description: 'Multimodal', capabilities: { thinking: false, tools: true, vision: true, contextWindow: 128000 } },
   { value: 'glm-4.5-flash', label: 'GLM-4.5 Flash', provider: 'zai', description: 'Fast', capabilities: { thinking: false, tools: true, vision: false, contextWindow: 128000 } },
+  // Mascarade (LLM Orchestration Engine)
+  { value: 'mascarade-router', label: 'Mascarade Router', provider: 'mascarade', description: 'Multi-LLM routing (best/cheapest/fastest)', capabilities: { thinking: false, tools: true, vision: false, contextWindow: 128000 } },
+  { value: 'mascarade-writer', label: 'Mascarade Writer', provider: 'mascarade', description: 'Content generation agent', capabilities: { thinking: false, tools: true, vision: false, contextWindow: 128000 } },
+  { value: 'mascarade-coder', label: 'Mascarade Coder', provider: 'mascarade', description: 'Code review & generation', capabilities: { thinking: false, tools: true, vision: false, contextWindow: 128000 } },
+  { value: 'mascarade-analyst', label: 'Mascarade Analyst', provider: 'mascarade', description: 'Data analysis agent', capabilities: { thinking: false, tools: true, vision: false, contextWindow: 128000 } },
+  { value: 'mascarade-planner', label: 'Mascarade Planner', provider: 'mascarade', description: 'Project decomposition', capabilities: { thinking: false, tools: true, vision: false, contextWindow: 128000 } },
 ];
 
 // Maps model shorthand to actual Claude model IDs
@@ -321,6 +327,12 @@ export const PROVIDER_PRESET_DEFINITIONS: Partial<Record<BuiltinProvider, Record
     complex:  { primaryModel: '', primaryThinking: 'low', phaseModels: { spec: '', planning: '', coding: '', qa: '' }, phaseThinking: { spec: 'low', planning: 'low', coding: 'low', qa: 'low' } },
     balanced: { primaryModel: '', primaryThinking: 'low', phaseModels: { spec: '', planning: '', coding: '', qa: '' }, phaseThinking: { spec: 'low', planning: 'low', coding: 'low', qa: 'low' } },
     quick:    { primaryModel: '', primaryThinking: 'low', phaseModels: { spec: '', planning: '', coding: '', qa: '' }, phaseThinking: { spec: 'low', planning: 'low', coding: 'low', qa: 'low' } },
+  },
+  mascarade: {
+    auto:     { primaryModel: 'mascarade-router', primaryThinking: 'low', phaseModels: { spec: 'mascarade-router', planning: 'mascarade-router', coding: 'mascarade-router', qa: 'mascarade-router' }, phaseThinking: { spec: 'low', planning: 'low', coding: 'low', qa: 'low' } },
+    complex:  { primaryModel: 'mascarade-router', primaryThinking: 'low', phaseModels: { spec: 'mascarade-router', planning: 'mascarade-router', coding: 'mascarade-router', qa: 'mascarade-router' }, phaseThinking: { spec: 'low', planning: 'low', coding: 'low', qa: 'low' } },
+    balanced: { primaryModel: 'mascarade-router', primaryThinking: 'low', phaseModels: { spec: 'mascarade-router', planning: 'mascarade-router', coding: 'mascarade-router', qa: 'mascarade-router' }, phaseThinking: { spec: 'low', planning: 'low', coding: 'low', qa: 'low' } },
+    quick:    { primaryModel: 'mascarade-router', primaryThinking: 'low', phaseModels: { spec: 'mascarade-router', planning: 'mascarade-router', coding: 'mascarade-router', qa: 'mascarade-router' }, phaseThinking: { spec: 'low', planning: 'low', coding: 'low', qa: 'low' } },
   },
 };
 

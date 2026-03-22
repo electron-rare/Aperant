@@ -156,6 +156,24 @@ function createProviderInstance(config: ProviderConfig) {
       });
     }
 
+    case SupportedProvider.Mascarade: {
+      // Mascarade LLM orchestration engine — OpenAI-compatible API
+      // Default: http://localhost:8100/v1 (Tower) or configurable
+      let mascaradeBaseURL = baseURL ?? 'http://localhost:8100/v1';
+      if (!mascaradeBaseURL.endsWith('/v1')) {
+        mascaradeBaseURL = mascaradeBaseURL.replace(/\/+$/, '') + '/v1';
+      }
+      return createOpenAICompatible({
+        name: 'mascarade',
+        apiKey: apiKey ?? 'mascarade-local',
+        baseURL: mascaradeBaseURL,
+        headers: {
+          ...headers,
+          'Authorization': `Bearer ${apiKey ?? 'mascarade-local'}`,
+        },
+      });
+    }
+
     default: {
       const _exhaustive: never = provider;
       throw new Error(`Unsupported provider: ${_exhaustive}`);
